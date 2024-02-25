@@ -7,10 +7,11 @@ on:
       - completed
 
 jobs:
-  post-main:
+  is-success:
+    if: ${{ github.ref == 'refs/heads/master' }} && ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "post-main"
+      - run: echo "is-success"
 
   pre-commit-autoupdate:
     uses: ./.github/workflows/_pre-commit-autoupdate.yml
@@ -19,7 +20,8 @@ jobs:
       pull-requests: write
 
   pdm-publish:
-    if: ${{ github.ref == 'refs/heads/master' }}
+    needs:
+      - is-success
     uses: ./.github/workflows/_pdm-publish.yml
     permissions:
       contents: read
