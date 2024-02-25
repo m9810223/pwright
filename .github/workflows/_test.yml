@@ -25,4 +25,5 @@ jobs:
           cache-dependency-path: "**/pdm.lock"
       - run: pdm install
       - run: pdm list --graph
+      - run: pdm run playwright install chromium
       - run: pdm run pytest
