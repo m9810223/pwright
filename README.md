@@ -1,3 +1,3 @@
-# Pw
+# Pwright
 
-[![pypi](https://img.shields.io/pypi/v/mh_pw.svg)](https://pypi.python.org/pypi/mh_pw)
+[![pypi](https://img.shields.io/pypi/v/pwright.svg)](https://pypi.python.org/pypi/pwright)
