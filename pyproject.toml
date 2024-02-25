@@ -1,0 +1,58 @@
+[project]
+name = "mh_pw"
+version = "0.1.0"
+requires-python = ">=3.8"
+dependencies = ["playwright>=1.41.2"]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = ["pytest>=8.0.2"]
+
+[tool.semantic_release]
+# https://python-semantic-release.readthedocs.io/en/latest/configuration.html
+version_toml = ["pyproject.toml:project.version"]
+version_variables = ["src/pw/__version__.py:VERSION"]
+
+[tool.black]
+# https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html
+line-length = 100
+skip-string-normalization = true
+
+[tool.ruff]
+line-length = 100
+fix = true
+show-fixes = true
+output-format = "full"
+
+[tool.ruff.lint]
+extend-select = [
+    "W",   # pycodestyle Warning
+    "I",   # isort
+    "N",   # pep8-naming
+    "S",   # flake8-bandit
+    "PTH", # flake8-use-pathlib
+    "PGH", # pygrep-hooks
+    "TRY", # tryceratops
+]
+ignore = [
+    "E501",   # line-too-long
+    "S101",   # Use of `assert` detected
+    "TRY003", # raise-vanilla-args
+    "TRY400", # error-instead-of-exception
+]
+
+[tool.ruff.lint.isort]
+# https://beta.ruff.rs/docs/settings/#isort
+lines-after-imports = 2
+force-single-line = true
+force-sort-within-sections = true
+known-local-folder = []
+
+[tool.mypy]
+ignore_missing_imports = true
