@@ -17,7 +17,7 @@ dev = ["pytest>=8.0.2"]
 [tool.semantic_release]
 # https://python-semantic-release.readthedocs.io/en/latest/configuration.html
 version_toml = ["pyproject.toml:project.version"]
-version_variables = ["src/pw/__version__.py:VERSION"]
+version_variables = ["src/pwright/__version__.py:VERSION"]
 
 [tool.black]
 # https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html
