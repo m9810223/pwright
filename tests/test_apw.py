@@ -1,6 +1,6 @@
 import asyncio
 
-from pw import apw
+from pwright import apw
 
 
 def test_playwright_page():

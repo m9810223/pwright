@@ -1,4 +1,4 @@
-from pw import pw
+from pwright import pw
 
 
 def test_playwright_page():
