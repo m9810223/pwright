@@ -31,7 +31,7 @@ def screenshot(
 
 
 @contextmanager
-def playwright_page(
+def pw_page(
     *,
     # [browser]
     timeout: t.Optional[float] = None,
@@ -46,9 +46,10 @@ def playwright_page(
     sources=True,
     path='trace.zip',
 ):
-    with playwright_context(
-        timeout=timeout, headed=headed, user_agent=user_agent, base_url=base_url
-    ) as (browser, context):
+    with pw_context(timeout=timeout, headed=headed, user_agent=user_agent, base_url=base_url) as (
+        browser,
+        context,
+    ):
         if tracing:
             context.tracing.start(screenshots=screenshots, snapshots=snapshots, sources=sources)
         with context.new_page() as page:
@@ -68,7 +69,7 @@ def playwright_page(
 
 
 @contextmanager
-def playwright_context(
+def pw_context(
     *,
     # [browser]
     timeout: t.Optional[float] = None,
@@ -77,14 +78,14 @@ def playwright_context(
     user_agent: t.Optional[str] = None,
     base_url: t.Optional[str] = None,
 ):
-    with playwright_browser(timeout=timeout, headed=headed) as browser:
+    with pw_browser(timeout=timeout, headed=headed) as browser:
         with browser.new_context(user_agent=user_agent, base_url=base_url) as context:
             logger.debug(f'{context = }')
             yield browser, context
 
 
 @contextmanager
-def playwright_browser(
+def pw_browser(
     *,
     # [browser]
     timeout: t.Optional[float] = None,
@@ -100,3 +101,8 @@ def playwright_browser(
             browser_name = browser_type.name
             logger.debug(f'{browser_name = }')
             yield browser
+
+
+playwright_page = pw_page
+playwright_context = pw_context
+playwright_browser = pw_browser

@@ -31,7 +31,7 @@ async def screenshot(
 
 
 @asynccontextmanager
-async def playwright_page(
+async def pw_page(
     *,
     # [browser]
     timeout: t.Optional[float] = None,
@@ -46,7 +46,7 @@ async def playwright_page(
     sources=True,
     path='trace.zip',
 ):
-    async with playwright_context(
+    async with pw_context(
         timeout=timeout, headed=headed, user_agent=user_agent, base_url=base_url
     ) as (browser, context):
         if tracing:
@@ -70,7 +70,7 @@ async def playwright_page(
 
 
 @asynccontextmanager
-async def playwright_context(
+async def pw_context(
     *,
     # [browser]
     timeout: t.Optional[float] = None,
@@ -79,14 +79,14 @@ async def playwright_context(
     user_agent: t.Optional[str] = None,
     base_url: t.Optional[str] = None,
 ):
-    async with playwright_browser(timeout=timeout, headed=headed) as browser:
+    async with pw_browser(timeout=timeout, headed=headed) as browser:
         async with await browser.new_context(user_agent=user_agent, base_url=base_url) as context:
             logger.debug(f'{context = }')
             yield browser, context
 
 
 @asynccontextmanager
-async def playwright_browser(
+async def pw_browser(
     *,
     # [browser]
     timeout: t.Optional[float] = None,
@@ -104,3 +104,8 @@ async def playwright_browser(
             browser_name = browser_type.name
             logger.debug(f'{browser_name = }')
             yield browser
+
+
+playwright_page = pw_page
+playwright_context = pw_context
+playwright_browser = pw_browser
