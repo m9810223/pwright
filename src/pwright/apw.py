@@ -44,6 +44,11 @@ async def renewable(p: t.Callable[..., t.AsyncContextManager[T]], n: int):
 
 
 @asynccontextmanager
+async def auto_renew(p: t.Callable[..., t.AsyncContextManager[T]], n: int):
+    yield renewable(p, n)
+
+
+@asynccontextmanager
 async def pw_page(
     *,
     # [browser]

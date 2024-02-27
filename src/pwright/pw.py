@@ -38,9 +38,14 @@ def screenshot(
 
 def renewable(p: t.Callable[..., t.ContextManager[T]], n: int):
     while True:
-        with p() as y:
+        with p() as obj:
             for _ in range(n):
-                yield y
+                yield obj
+
+
+@contextmanager
+def auto_renew(p: t.Callable[..., t.ContextManager[T]], n: int):
+    yield renewable(p, n)
 
 
 @contextmanager
