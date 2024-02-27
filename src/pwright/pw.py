@@ -13,6 +13,9 @@ from playwright.sync_api import Route as Route
 from playwright.sync_api import TimeoutError as TimeoutError
 from playwright.sync_api import sync_playwright as playwright
 
+from ._utils import DEFAULT_INIT_SCRIPT
+from ._utils import relative_to_cwd
+
 
 Eh = ElementHandle
 
@@ -27,7 +30,7 @@ def screenshot(
 ):
     file.parent.mkdir(parents=True, exist_ok=True)
     file.write_bytes(page.screenshot())
-    logger.info(f' -> screenshot: ./{file.relative_to(Path.cwd())}')
+    logger.info(f' -> screenshot: ./{relative_to_cwd(file)}')
 
 
 @contextmanager
@@ -45,6 +48,8 @@ def pw_page(
     snapshots=True,
     sources=True,
     path='trace.zip',
+    # [page]
+    init_script=DEFAULT_INIT_SCRIPT,
 ):
     with pw_context(timeout=timeout, headed=headed, user_agent=user_agent, base_url=base_url) as (
         browser,
@@ -53,15 +58,7 @@ def pw_page(
         if tracing:
             context.tracing.start(screenshots=screenshots, snapshots=snapshots, sources=sources)
         with context.new_page() as page:
-            page.add_init_script(
-                # https://github.com/microsoft/playwright-python/issues/527#issuecomment-887182658
-                # '''
-                # navigator.webdriver = false
-                # '''
-                '''
-                Object.defineProperty(navigator, 'webdriver', {get: () => false})
-                '''
-            )
+            page.add_init_script(init_script)
             logger.debug(f'{page = }')
             yield browser, context, page
         if tracing:
