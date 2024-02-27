@@ -13,7 +13,7 @@ from playwright.async_api import Route as Route
 from playwright.async_api import TimeoutError as TimeoutError
 from playwright.async_api import async_playwright as playwright
 
-from ._utils import DEFAULT_INIT_SCRIPT
+from ._constants import DEFAULT_INIT_SCRIPT
 from ._utils import relative_to_cwd
 
 
@@ -21,6 +21,9 @@ Eh = ElementHandle
 
 
 logger = logging.getLogger(__name__)
+
+
+T = t.TypeVar('T')
 
 
 async def screenshot(
@@ -31,6 +34,13 @@ async def screenshot(
     file.parent.mkdir(parents=True, exist_ok=True)
     file.write_bytes(await page.screenshot())
     logger.info(f' -> screenshot: ./{relative_to_cwd(file)}')
+
+
+async def renewable(p: t.Callable[..., t.AsyncContextManager[T]], n: int):
+    while True:
+        async with p() as y:
+            for _ in range(n):
+                yield y
 
 
 @asynccontextmanager

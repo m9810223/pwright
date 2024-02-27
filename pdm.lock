@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:008139243a1f8ba05af117e44ace513932852fdbc50954d793d700a34aee82e9"
+content_hash = "sha256:2fb95398b550b04794f1dac11d630e8ee6034c14971921e52b5aaabd31eb6ebd"
 
 [[package]]
 name = "colorama"
@@ -109,7 +109,6 @@ groups = ["default"]
 dependencies = [
     "greenlet==3.0.3",
     "pyee==11.0.1",
-    "typing-extensions; python_version <= \"3.8\"",
 ]
 files = [
     {file = "playwright-1.41.2-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:cf68335a5dfa4038fa797a4ba0105faee0094ebbb372547d7a27feec5b23c672"},
