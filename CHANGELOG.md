@@ -2,6 +2,19 @@
 
 
 
+## v2.0.0 (2024-02-27)
+
+### Breaking
+
+* feat: ...
+
+BREAKING CHANGE: ... ([`5723392`](https://github.com/michaelwhouse/pwright/commit/572339225d50fb1be4e32970d65bbd257cfa9398))
+
+### Unknown
+
+* feat ([`113d879`](https://github.com/michaelwhouse/pwright/commit/113d879dd68277a1e82d494a443e38979914b557))
+
+
 ## v1.0.0 (2024-02-27)
 
 ### Breaking
