@@ -2,6 +2,13 @@
 
 
 
+## v3.1.0 (2024-02-27)
+
+### Feature
+
+* feat: auto_renew ([`ea047e3`](https://github.com/michaelwhouse/pwright/commit/ea047e3c3632005b0ee8f963fea4b128397804f1))
+
+
 ## v3.0.0 (2024-02-27)
 
 ### Breaking
