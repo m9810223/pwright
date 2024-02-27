@@ -2,6 +2,19 @@
 
 
 
+## v3.0.0 (2024-02-27)
+
+### Breaking
+
+* feat: add renewable
+
+BREAKING CHANGE: requires-python = &#34;&gt;=3.10&#34; ([`4abd7e9`](https://github.com/michaelwhouse/pwright/commit/4abd7e9632c4e5bbaf9e07328d10027ae12cdfa0))
+
+### Unknown
+
+* Merge branch &#39;master&#39; of github.com:michaelwhouse/pwright ([`9cfaf68`](https://github.com/michaelwhouse/pwright/commit/9cfaf68a3dfd50bb080854ebc540f66dfa41a8fe))
+
+
 ## v2.0.0 (2024-02-27)
 
 ### Breaking
