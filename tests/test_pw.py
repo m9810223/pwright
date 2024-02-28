@@ -3,7 +3,7 @@ from pwright import pw
 
 def test_playwright_page():
     def f():
-        with pw.pw_page() as (browser, context, page):
+        with pw.pw_page() as page:
             page.goto('https://playwright.dev/')
             title = page.title()
             return title
