@@ -1,7 +1,9 @@
 from contextlib import contextmanager
+from pathlib import Path
 import typing as t
 
-from .._constants import DEFAULT_INIT_SCRIPT
+from .._constants import INIT_SCRIPT_HIDE_NAVIGATOR
+from ._apis import ProxySettings
 from ._cms import playwright_browser
 from ._cms import playwright_context
 from ._cms import playwright_page
@@ -14,32 +16,24 @@ pw_browser = playwright_browser
 def pw_context(
     *,
     # [browser]
-    timeout: t.Optional[float] = None,
+    executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
+    proxy: t.Optional[ProxySettings] = None,
+    slow_mo: t.Optional[float] = None,
+    traces_dir: t.Optional[t.Union[str, Path]] = None,
     # [context]
+    no_viewport: t.Optional[bool] = None,
     user_agent: t.Optional[str] = None,
-    base_url: t.Optional[str] = None,
+    is_mobile: t.Optional[bool] = None,
+    # proxy: t.Optional[ProxySettings] = None,
     # [context.tracing]
     tracing=False,
-    screenshots=True,
     snapshots=True,
+    screenshots=True,
     sources=True,
     path='trace.zip',
 ):
-    with playwright_context(
-        # [browser]
-        timeout=timeout,
-        headed=headed,
-        # [context]
-        user_agent=user_agent,
-        base_url=base_url,
-        # [context.tracing]
-        tracing=tracing,
-        screenshots=screenshots,
-        snapshots=snapshots,
-        sources=sources,
-        path=path,
-    ) as (_, context):
+    with playwright_context(**locals()) as (_, context):
         yield context
 
 
@@ -47,34 +41,28 @@ def pw_context(
 def pw_page(
     *,
     # [browser]
-    timeout: t.Optional[float] = None,
+    executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
+    proxy: t.Optional[ProxySettings] = None,
+    slow_mo: t.Optional[float] = None,
+    traces_dir: t.Optional[t.Union[str, Path]] = None,
     # [context]
+    no_viewport: t.Optional[bool] = None,
     user_agent: t.Optional[str] = None,
-    base_url: t.Optional[str] = None,
+    is_mobile: t.Optional[bool] = None,
+    # proxy: t.Optional[ProxySettings] = None,
     # [context.tracing]
     tracing=False,
-    screenshots=True,
     snapshots=True,
+    screenshots=True,
     sources=True,
     path='trace.zip',
     # [page]
-    init_script=DEFAULT_INIT_SCRIPT,
+    default_timeout: t.Optional[float] = None,
+    init_script: t.Optional[str] = INIT_SCRIPT_HIDE_NAVIGATOR,
+    init_script_path: t.Optional[t.Union[str, Path]] = None,
 ):
     with playwright_page(
-        # [browser]
-        timeout=timeout,
-        headed=headed,
-        # [context]
-        user_agent=user_agent,
-        base_url=base_url,
-        # [context.tracing]
-        tracing=tracing,
-        screenshots=screenshots,
-        snapshots=snapshots,
-        sources=sources,
-        path=path,
-        # [page]
-        init_script=init_script,
+        **locals(),
     ) as (_, _, page):
         yield page
