@@ -2,6 +2,15 @@
 
 
 
+## v4.0.0 (2024-02-28)
+
+### Breaking
+
+* feat: update apis
+
+BREAKING CHANGE: The API has changed. ([`2126723`](https://github.com/michaelwhouse/pwright/commit/2126723a16fce30af0f9f7c1f9a537bee84d3b76))
+
+
 ## v3.1.0 (2024-02-27)
 
 ### Feature
