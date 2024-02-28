@@ -2,6 +2,15 @@
 
 
 
+## v6.0.0 (2024-02-28)
+
+### Breaking
+
+* feat: ...
+
+BREAKING CHANGE: ... ([`4a591c6`](https://github.com/michaelwhouse/pwright/commit/4a591c60d4b446a3c97dd4113d5b89ffa73fc79c))
+
+
 ## v5.0.0 (2024-02-28)
 
 ### Breaking
