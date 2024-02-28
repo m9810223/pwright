@@ -1,4 +1,5 @@
 from contextlib import contextmanager
+from datetime import timedelta
 from pathlib import Path
 import typing as t
 
@@ -19,10 +20,10 @@ def pw_context(
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
-    slow_mo: t.Optional[float] = None,
+    slow_mo: t.Optional[timedelta] = None,
     traces_dir: t.Optional[t.Union[str, Path]] = None,
     # [context]
-    no_viewport: t.Optional[bool] = None,
+    no_viewport: t.Optional[bool] = True,
     user_agent: t.Optional[str] = None,
     is_mobile: t.Optional[bool] = None,
     # proxy: t.Optional[ProxySettings] = None,
@@ -44,10 +45,10 @@ def pw_page(
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
-    slow_mo: t.Optional[float] = None,
+    slow_mo: t.Optional[timedelta] = None,
     traces_dir: t.Optional[t.Union[str, Path]] = None,
     # [context]
-    no_viewport: t.Optional[bool] = None,
+    no_viewport: t.Optional[bool] = True,
     user_agent: t.Optional[str] = None,
     is_mobile: t.Optional[bool] = None,
     # proxy: t.Optional[ProxySettings] = None,
@@ -58,7 +59,7 @@ def pw_page(
     sources=True,
     path='trace.zip',
     # [page]
-    default_timeout: t.Optional[float] = None,
+    default_timeout: t.Optional[timedelta] = None,
     init_script: t.Optional[str] = INIT_SCRIPT_HIDE_NAVIGATOR,
     init_script_path: t.Optional[t.Union[str, Path]] = None,
 ):
