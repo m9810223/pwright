@@ -2,6 +2,15 @@
 
 
 
+## v7.0.0 (2024-02-29)
+
+### Breaking
+
+* feat: support python3.8
+
+BREAKING CHANGE: support python3.8 ([`cab6dc7`](https://github.com/michaelwhouse/pwright/commit/cab6dc7b03431bcb2a89d3a4f1aa51edd5a12b99))
+
+
 ## v6.0.0 (2024-02-28)
 
 ### Breaking
