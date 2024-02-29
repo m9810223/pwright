@@ -2,6 +2,13 @@
 
 
 
+## v7.1.0 (2024-02-29)
+
+### Feature
+
+* feat: release ([`377de0d`](https://github.com/michaelwhouse/pwright/commit/377de0d6814ef05823dabbdc4fc09707c5fea22e))
+
+
 ## v7.0.0 (2024-02-29)
 
 ### Breaking
