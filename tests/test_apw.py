@@ -1,9 +1,14 @@
 import asyncio
 from contextlib import asynccontextmanager
+import sys
 import time
 import typing as t
 
 from pwright import apw
+
+
+if sys.version_info < (3, 10):
+    anext = apw.anext
 
 
 def test_pw_page():
