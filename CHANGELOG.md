@@ -2,6 +2,13 @@
 
 
 
+## v7.2.0 (2024-03-01)
+
+### Feature
+
+* feat: release ([`82e1163`](https://github.com/michaelwhouse/pwright/commit/82e116340f3784b79b5c79cfd9e9db72fa590918))
+
+
 ## v7.1.0 (2024-02-29)
 
 ### Feature
