@@ -59,6 +59,7 @@ def pw_page(
     sources=True,
     path='trace.zip',
     # [page]
+    default_navigation_timeout: t.Optional[timedelta] = None,
     default_timeout: t.Optional[timedelta] = None,
     init_script: t.Optional[str] = INIT_SCRIPT_HIDE_NAVIGATOR,
     init_script_path: t.Optional[t.Union[str, Path]] = None,

@@ -109,6 +109,7 @@ async def playwright_page(
     sources=True,
     path='trace.zip',
     # [page]
+    default_navigation_timeout: t.Optional[timedelta] = None,
     default_timeout: t.Optional[timedelta] = None,
     init_script: t.Optional[str] = INIT_SCRIPT_HIDE_NAVIGATOR,
     init_script_path: t.Optional[t.Union[str, Path]] = None,
@@ -129,6 +130,10 @@ async def playwright_page(
         path=path,
     ) as (browser, context):
         async with await context.new_page() as page:
+            if default_navigation_timeout is not None:
+                page.set_default_navigation_timeout(
+                    timeout=default_navigation_timeout.total_seconds() * 1000,
+                )
             if default_timeout is not None:
                 page.set_default_timeout(
                     timeout=default_timeout.total_seconds() * 1000,
