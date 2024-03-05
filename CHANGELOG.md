@@ -2,6 +2,25 @@
 
 
 
+## v7.3.0 (2024-03-05)
+
+### Chore
+
+* chore: update pre-commit hooks ([`890350f`](https://github.com/michaelwhouse/pwright/commit/890350f88e2b766c113969b65695707dc1eb2ccc))
+
+### Feature
+
+* feat: release ([`f49bee4`](https://github.com/michaelwhouse/pwright/commit/f49bee4b57d19239ab7d640fb607683ea43085f6))
+
+### Unknown
+
+* Update _pre-commit-autoupdate.yml ([`690f402`](https://github.com/michaelwhouse/pwright/commit/690f402b4b837878b3e718ceceaa3e4e5ba70fb7))
+
+* Merge pull request #1 from michaelwhouse/pre-commit-autoupdate
+
+Update pre-commit hooks ([`ee63b4e`](https://github.com/michaelwhouse/pwright/commit/ee63b4e6bbabd8917df1dde3385997220a5fca46))
+
+
 ## v7.2.0 (2024-03-01)
 
 ### Feature
