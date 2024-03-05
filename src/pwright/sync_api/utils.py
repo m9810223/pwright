@@ -14,11 +14,13 @@ T = t.TypeVar('T')
 
 
 @contextmanager
-def auto_renew(p: t.Callable[..., t.ContextManager[T]], n: int):
+def auto_renew(
+    p: t.Callable[..., t.ContextManager[T]], n: int
+) -> t.Generator[t.Generator[T, None, None], None, None]:
     yield renewable(p, n)
 
 
-def renewable(p: t.Callable[..., t.ContextManager[T]], n: int):
+def renewable(p: t.Callable[..., t.ContextManager[T]], n: int) -> t.Generator[T, None, None]:
     while True:
         with p() as obj:
             for _ in range(n):
