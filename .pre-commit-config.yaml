@@ -23,17 +23,17 @@ repos:
   ### PYTHON
 
   - repo: https://github.com/psf/black
-    rev: 6fdf8a4af28071ed1d079c01122b34c5d587207a  # frozen: 24.2.0
+    rev: 552baf822992936134cbd31a38f69c8cfe7c0f05  # frozen: 24.3.0
     hooks: # https://black.readthedocs.io/en/stable/integrations/source_version_control.html
       - id: black
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 0dd3437ad984b107802b242c696edf2bd72676ee  # frozen: v0.3.0
+    rev: 1986670a8c4578a526ad3dddee3b35d9cfb9d7be  # frozen: v0.3.4
     hooks: # https://beta.ruff.rs/docs/installation-and-usage/#usage
       - id: ruff
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "8cd2d4056637e242709fe09f15a36f0b4b682bda" # frozen: v1.8.0
+    rev: "9db9854e3041219b1eb619872a2dfaf58adfb20b"  # frozen: v1.9.0
     hooks:
       - id: mypy
         additional_dependencies: [types-all]
