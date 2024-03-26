@@ -2,6 +2,31 @@
 
 
 
+## v8.0.0 (2024-03-26)
+
+### Breaking
+
+* feat: release
+
+BREAKING CHANGE: timeouts or times args are now unions of `float` and `timedelta` instead of just `float`. ([`f9fd845`](https://github.com/michaelwhouse/pwright/commit/f9fd845582c74441a400c8456da63056e4f671e7))
+
+### Chore
+
+* chore: update pre-commit hooks ([`ead01a5`](https://github.com/michaelwhouse/pwright/commit/ead01a5db14847305433d87153bdce4f0aa3e702))
+
+* chore: update pre-commit hooks ([`65c0c88`](https://github.com/michaelwhouse/pwright/commit/65c0c881473ea5fb912ae01c059db1a52b07cb76))
+
+### Unknown
+
+* Merge pull request #3 from michaelwhouse/pre-commit-autoupdate
+
+Update pre-commit hooks ([`7eb5837`](https://github.com/michaelwhouse/pwright/commit/7eb583745d0d47602b1fea62474f7b0274b2fd2f))
+
+* Merge pull request #2 from michaelwhouse/pre-commit-autoupdate
+
+Update pre-commit hooks ([`807c5d9`](https://github.com/michaelwhouse/pwright/commit/807c5d99c9045fb262ae714cd91eb896e4d32009))
+
+
 ## v7.3.0 (2024-03-05)
 
 ### Chore
