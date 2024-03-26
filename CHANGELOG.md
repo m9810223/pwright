@@ -2,6 +2,17 @@
 
 
 
+## v8.2.0 (2024-03-26)
+
+### Feature
+
+* feat: release ([`89bf0ba`](https://github.com/michaelwhouse/pwright/commit/89bf0ba58b5daefe96025bf4fb0e729ebe3bff4a))
+
+### Unknown
+
+* Merge branch &#39;master&#39; of github.com:michaelwhouse/pwright ([`0cdb95c`](https://github.com/michaelwhouse/pwright/commit/0cdb95c4af82179918f0cdb72aab2ae48a61284b))
+
+
 ## v8.1.0 (2024-03-26)
 
 ### Chore
