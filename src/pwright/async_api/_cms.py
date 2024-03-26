@@ -1,10 +1,11 @@
 from contextlib import asynccontextmanager
-from datetime import timedelta
 import logging
 from pathlib import Path
 import typing as t
 
 from .._constants import INIT_SCRIPT_HIDE_NAVIGATOR
+from .._typealiases import SecondsT
+from .._utils import cast_seconds
 from ._apis import ProxySettings
 from ._apis import playwright
 
@@ -19,7 +20,7 @@ async def playwright_browser(
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
-    slow_mo: t.Optional[timedelta] = None,
+    slow_mo: t.Optional[SecondsT] = None,
     traces_dir: t.Optional[t.Union[str, Path]] = None,
 ):
     # https://playwright.dev/python/docs/test-runners#fixtures
@@ -29,7 +30,7 @@ async def playwright_browser(
             executable_path=executable_path,
             headless=not headed,
             proxy=proxy,
-            slow_mo=slow_mo,
+            slow_mo=cast_seconds(slow_mo),
             traces_dir=traces_dir,
         ) as browser:
             browser_type = browser.browser_type
@@ -47,7 +48,7 @@ async def playwright_context(
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
-    slow_mo: t.Optional[timedelta] = None,
+    slow_mo: t.Optional[SecondsT] = None,
     traces_dir: t.Optional[t.Union[str, Path]] = None,
     # [context]
     no_viewport: t.Optional[bool] = True,
@@ -95,7 +96,7 @@ async def playwright_page(
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
-    slow_mo: t.Optional[timedelta] = None,
+    slow_mo: t.Optional[SecondsT] = None,
     traces_dir: t.Optional[t.Union[str, Path]] = None,
     # [context]
     no_viewport: t.Optional[bool] = True,
@@ -109,8 +110,8 @@ async def playwright_page(
     sources=True,
     path='trace.zip',
     # [page]
-    default_navigation_timeout: t.Optional[timedelta] = None,
-    default_timeout: t.Optional[timedelta] = None,
+    default_navigation_timeout: t.Optional[SecondsT] = None,
+    default_timeout: t.Optional[SecondsT] = None,
     init_script: t.Optional[str] = INIT_SCRIPT_HIDE_NAVIGATOR,
     init_script_path: t.Optional[t.Union[str, Path]] = None,
 ):
@@ -132,11 +133,11 @@ async def playwright_page(
         async with await context.new_page() as page:
             if default_navigation_timeout is not None:
                 page.set_default_navigation_timeout(
-                    timeout=default_navigation_timeout.total_seconds() * 1000,
+                    timeout=cast_seconds(default_navigation_timeout),
                 )
             if default_timeout is not None:
                 page.set_default_timeout(
-                    timeout=default_timeout.total_seconds() * 1000,
+                    timeout=cast_seconds(default_timeout),
                 )
             await page.add_init_script(
                 script=init_script,
