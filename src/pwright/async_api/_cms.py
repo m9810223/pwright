@@ -5,7 +5,7 @@ import typing as t
 
 from .._constants import INIT_SCRIPT_HIDE_NAVIGATOR
 from .._typealiases import SecondsT
-from .._utils import cast_seconds
+from .._utils import to_milliseconds
 from ._apis import ProxySettings
 from ._apis import playwright
 
@@ -30,7 +30,7 @@ async def playwright_browser(
             executable_path=executable_path,
             headless=not headed,
             proxy=proxy,
-            slow_mo=cast_seconds(slow_mo),
+            slow_mo=to_milliseconds(slow_mo),
             traces_dir=traces_dir,
         ) as browser:
             browser_type = browser.browser_type
@@ -133,11 +133,11 @@ async def playwright_page(
         async with await context.new_page() as page:
             if default_navigation_timeout is not None:
                 page.set_default_navigation_timeout(
-                    timeout=cast_seconds(default_navigation_timeout),
+                    timeout=to_milliseconds(default_navigation_timeout),
                 )
             if default_timeout is not None:
                 page.set_default_timeout(
-                    timeout=cast_seconds(default_timeout),
+                    timeout=to_milliseconds(default_timeout),
                 )
             await page.add_init_script(
                 script=init_script,
