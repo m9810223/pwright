@@ -2,6 +2,25 @@
 
 
 
+## v8.1.0 (2024-03-26)
+
+### Chore
+
+* chore: update pre-commit hooks ([`7852943`](https://github.com/michaelwhouse/pwright/commit/785294310b51347815be27e0bab075968c8698d3))
+
+### Feature
+
+* feat: release ([`33ae707`](https://github.com/michaelwhouse/pwright/commit/33ae707e6e623e153daec42e0134e5b2fdbcc0c8))
+
+* feat: release ([`402d527`](https://github.com/michaelwhouse/pwright/commit/402d527835feab0f9239ce5be3ee7e4cb0ada492))
+
+### Unknown
+
+* Merge pull request #4 from michaelwhouse/pre-commit-autoupdate
+
+Update pre-commit hooks ([`9140927`](https://github.com/michaelwhouse/pwright/commit/914092748a4850766f3add6d7f9af6047b63789a))
+
+
 ## v8.0.0 (2024-03-26)
 
 ### Breaking
