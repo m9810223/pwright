@@ -15,7 +15,10 @@ def relative_to_cwd(path: Path):
     return relative_to(path, Path.cwd())
 
 
-def to_milliseconds(seconds: t.Optional[SecondsT]):
+def to_milliseconds(maybe_seconds: t.Optional[SecondsT]):
+    if maybe_seconds is None:
+        return
+    seconds = maybe_seconds
     if isinstance(seconds, timedelta):
-        return 1000 * seconds.total_seconds()
-    return seconds
+        seconds = seconds.total_seconds()
+    return 1000 * seconds
