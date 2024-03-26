@@ -1,9 +1,9 @@
 from contextlib import asynccontextmanager
-from datetime import timedelta
 from pathlib import Path
 import typing as t
 
 from .._constants import INIT_SCRIPT_HIDE_NAVIGATOR
+from .._typealiases import SecondsT
 from ._apis import ProxySettings
 from ._cms import playwright_browser
 from ._cms import playwright_context
@@ -20,7 +20,7 @@ async def pw_context(
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
-    slow_mo: t.Optional[timedelta] = None,
+    slow_mo: t.Optional[SecondsT] = None,
     traces_dir: t.Optional[t.Union[str, Path]] = None,
     # [context]
     no_viewport: t.Optional[bool] = True,
@@ -47,7 +47,7 @@ async def pw_page(
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
-    slow_mo: t.Optional[timedelta] = None,
+    slow_mo: t.Optional[SecondsT] = None,
     traces_dir: t.Optional[t.Union[str, Path]] = None,
     # [context]
     no_viewport: t.Optional[bool] = True,
@@ -61,8 +61,8 @@ async def pw_page(
     sources=True,
     path='trace.zip',
     # [page]
-    default_navigation_timeout: t.Optional[timedelta] = None,
-    default_timeout: t.Optional[timedelta] = None,
+    default_navigation_timeout: t.Optional[SecondsT] = None,
+    default_timeout: t.Optional[SecondsT] = None,
     init_script: t.Optional[str] = INIT_SCRIPT_HIDE_NAVIGATOR,
     init_script_path: t.Optional[t.Union[str, Path]] = None,
 ):
