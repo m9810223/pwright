@@ -2,7 +2,7 @@ from datetime import timedelta
 from pathlib import Path
 import typing as t
 
-from ._typealiases import SecondsT
+from .typealiases import SecondsT
 
 
 def relative_to(path: Path, other: Path):

@@ -3,7 +3,7 @@ from pathlib import Path
 import typing as t
 
 from .._constants import INIT_SCRIPT_HIDE_NAVIGATOR
-from .._typealiases import SecondsT
+from ..typealiases import SecondsT
 from ._apis import ProxySettings
 from ._cms import playwright_browser
 from ._cms import playwright_context
