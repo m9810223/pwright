@@ -131,14 +131,12 @@ async def playwright_page(
         path=path,
     ) as (browser, context):
         async with await context.new_page() as page:
+            default_navigation_timeout = to_milliseconds(default_navigation_timeout)
             if default_navigation_timeout is not None:
-                page.set_default_navigation_timeout(
-                    timeout=to_milliseconds(default_navigation_timeout),
-                )
+                page.set_default_navigation_timeout(timeout=default_navigation_timeout)
+            default_timeout = to_milliseconds(default_timeout)
             if default_timeout is not None:
-                page.set_default_timeout(
-                    timeout=to_milliseconds(default_timeout),
-                )
+                page.set_default_timeout(timeout=default_timeout)
             await page.add_init_script(
                 script=init_script,
                 path=init_script_path,
