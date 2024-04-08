@@ -2,6 +2,13 @@
 
 
 
+## v8.10.0 (2024-04-08)
+
+### Feature
+
+* feat: release ([`038840d`](https://github.com/michaelwhouse/pwright/commit/038840d48fdea1aa3ace09cb70594548bf57f3ff))
+
+
 ## v8.9.0 (2024-04-08)
 
 ### Feature
