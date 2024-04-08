@@ -2,6 +2,13 @@
 
 
 
+## v8.5.0 (2024-04-08)
+
+### Feature
+
+* feat: release ([`7faaf64`](https://github.com/michaelwhouse/pwright/commit/7faaf645dd2d4929b6e9c03e278f8190ad38fbee))
+
+
 ## v8.4.0 (2024-04-08)
 
 ### Feature
