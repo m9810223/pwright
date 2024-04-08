@@ -1,3 +1,4 @@
+from ..typealiases import GeneratorContextManager as GeneratorContextManager
 from ._apis import Browser as Browser
 from ._apis import BrowserContext as BrowserContext
 from ._apis import Dialog as Dialog

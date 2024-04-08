@@ -1,5 +1,6 @@
 import sys
 
+from ..typealiases import AsyncGeneratorContextManager as AsyncGeneratorContextManager
 from ._apis import Browser as Browser
 from ._apis import BrowserContext as BrowserContext
 from ._apis import Dialog as Dialog
@@ -20,8 +21,10 @@ from .utils import renewable as renewable
 from .utils import screenshot as screenshot
 
 
-if sys.version_info < (3, 10):
-    from ._compatibilities import anext as anext
-
+GeneratorContextManager = AsyncGeneratorContextManager
 Eh = ElementHandle
 playwright = playwright
+
+
+if sys.version_info < (3, 10):
+    from ._compatibilities import anext as anext
