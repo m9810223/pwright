@@ -2,18 +2,17 @@ import asyncio
 from contextlib import asynccontextmanager
 import sys
 import time
-import typing as t
 
-from pwright import apw
+from pwright import apw as pw
 
 
 if sys.version_info < (3, 10):
-    anext = apw.anext
+    anext = pw.anext
 
 
 def test_pw_page():
     async def get_title(*, url: str):
-        async with apw.pw_page() as page:
+        async with pw.pw_page() as page:
             await page.goto(url)
             title = await page.title()
             return title
@@ -24,10 +23,12 @@ def test_pw_page():
 async def _test_renew(headed=True):
     @asynccontextmanager
     async def gen_page():
-        async with apw.pw_page(headed=headed) as page:
+        async with pw.pw_page(headed=headed) as page:
             yield page
 
-    async def run(gen: t.AsyncGenerator[apw.Page, None]):
+    gen_page_cm: pw.AsyncGeneratorContextManager[pw.Page] = gen_page
+
+    async def run(gen: pw.AsyncGenerator[pw.Page]):
         for _ in range(5):
             page = await anext(gen)
             await page.goto('https://playwright.dev/')
@@ -38,8 +39,13 @@ async def _test_renew(headed=True):
         if 0:
             await asyncio.sleep(30)
 
-    await run(apw.renewable(gen_page, 3))
-    async with apw.auto_renew(gen_page, 3) as agen:
+    renewable: pw.AsyncGenerator[pw.Page] = pw.renewable(gen_page_cm, 3)
+    await run(renewable)
+
+    auto_renew: pw.AsyncGeneratorContextManagerAsyncGenerator[pw.Page] = pw.auto_renew(
+        gen_page_cm, 3
+    )
+    async with auto_renew as agen:
         await run(agen)
 
 

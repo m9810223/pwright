@@ -4,6 +4,7 @@ from pathlib import Path
 import typing as t
 
 from .._utils import relative_to_cwd
+from ..typealiases import AsyncGeneratorContextManager
 from ._apis import Page
 
 
@@ -15,14 +16,12 @@ T = t.TypeVar('T')
 
 @asynccontextmanager
 async def auto_renew(
-    p: t.Callable[..., t.AsyncContextManager[T]], n: int
+    p: AsyncGeneratorContextManager[T], n: int
 ) -> t.AsyncGenerator[t.AsyncGenerator[T, None], None]:
     yield renewable(p, n)
 
 
-async def renewable(
-    p: t.Callable[..., t.AsyncContextManager[T]], n: int
-) -> t.AsyncGenerator[T, None]:
+async def renewable(p: AsyncGeneratorContextManager[T], n: int) -> t.AsyncGenerator[T, None]:
     while True:
         async with p() as y:
             for _ in range(n):

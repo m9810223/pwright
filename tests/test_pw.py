@@ -1,6 +1,5 @@
 from contextlib import contextmanager
 import time
-import typing as t
 
 from pwright import pw
 
@@ -21,7 +20,9 @@ def _test_renew(headed=True):
         with pw.pw_page(headed=headed) as page:
             yield page
 
-    def run(gen: t.Generator[pw.Page, None, None]):
+    gen_page_cm: pw.GeneratorContextManager[pw.Page] = gen_page
+
+    def run(gen: pw.Generator[pw.Page]):
         for _ in range(5):
             page = next(gen)
             page.goto('https://playwright.dev/')
@@ -32,8 +33,11 @@ def _test_renew(headed=True):
         if 0:
             time.sleep(30)
 
-    run(pw.renewable(gen_page, 3))
-    with pw.auto_renew(gen_page, 3) as gen:
+    renewable: pw.Generator[pw.Page] = pw.renewable(gen_page_cm, 3)
+    run(renewable)
+
+    auto_renew: pw.GeneratorContextManagerGenerator[pw.Page] = pw.auto_renew(gen_page_cm, 3)
+    with auto_renew as gen:
         run(gen)
 
 

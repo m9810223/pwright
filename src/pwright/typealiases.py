@@ -2,17 +2,17 @@ from datetime import timedelta
 import typing as t
 
 
-try:
-    from typing import ParamSpec
-except ImportError:
-    from typing_extensions import ParamSpec  # type: ignore[assignment]
-
-
 T = t.TypeVar('T')
-P = ParamSpec('P')
 
 
 SecondsT = t.Union[float, timedelta]
 
-GeneratorContextManager = t.Callable[P, t.ContextManager[T]]
-AsyncGeneratorContextManager = t.Callable[P, t.AsyncContextManager[T]]
+
+Generator = t.Generator[T, None, None]
+AsyncGenerator = t.AsyncGenerator[T, None]
+
+GeneratorContextManager = t.Callable[..., t.ContextManager[T]]
+AsyncGeneratorContextManager = t.Callable[..., t.AsyncContextManager[T]]
+
+GeneratorContextManagerGenerator = t.ContextManager[Generator[T]]
+AsyncGeneratorContextManagerAsyncGenerator = t.AsyncContextManager[AsyncGenerator[T]]
