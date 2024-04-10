@@ -28,7 +28,7 @@ repos:
       - id: black
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 1986670a8c4578a526ad3dddee3b35d9cfb9d7be  # frozen: v0.3.4
+    rev: 0ccbb5b7942d83fbcf7cb5e0fd99633efd2351d7  # frozen: v0.3.5
     hooks: # https://beta.ruff.rs/docs/installation-and-usage/#usage
       - id: ruff
 
@@ -57,12 +57,12 @@ repos:
   ### MISC
 
   - repo: https://github.com/crate-ci/typos
-    rev: 68c7289a620636165869822d2d233e785272935b  # frozen: v1.19.0
+    rev: 1717364ea88dd86a298e8a282b6df035e81e176f  # frozen: v1.20.7
     hooks:
       - id: typos
 
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: 0afbc519ee4aa0a1eb0f7dd78876c8de46d4cf08 # frozen: v2.12.0
+    rev: bdf9bad34ed8102dee37a1fabb11ebc40d51063f  # frozen: v2.13.0
     hooks:
       - id: pretty-format-yaml
         args:
@@ -71,7 +71,7 @@ repos:
           - --autofix
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: c4a0b883114b00d8d76b479c820ce7950211c99b # frozen: v4.5.0
+    rev: 2c9f875913ee60ca25ce70243dc24d5b6415598c  # frozen: v4.6.0
     hooks: # https://pre-commit.com/hooks.html
       # `(\S) - ` -> `$1 # `
       - id: check-added-large-files # prevents giant files from being committed.
