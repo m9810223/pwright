@@ -15,13 +15,13 @@ T = t.TypeVar('T')
 
 
 @contextmanager
-def auto_renew(
+def renewing(
     p: GeneratorContextManager[T], n: int
 ) -> t.Generator[t.Generator[T, None, None], None, None]:
-    yield renewable(p, n)
+    yield auto_renew(p, n)
 
 
-def renewable(p: GeneratorContextManager[T], n: int) -> t.Generator[T, None, None]:
+def auto_renew(p: GeneratorContextManager[T], n: int) -> t.Generator[T, None, None]:
     while True:
         with p() as obj:
             for _ in range(n):

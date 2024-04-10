@@ -22,23 +22,23 @@ def _test_renew(headed=True):
 
     gen_page_cm: pw.GeneratorContextManager[pw.Page] = gen_page
 
-    def run(gen: pw.Generator[pw.Page]):
+    def run(*, page_gen: pw.Generator[pw.Page]):
         for _ in range(5):
-            page = next(gen)
+            page = next(page_gen)
             page.goto('https://playwright.dev/')
             print(id(page))
             if 0:
                 time.sleep(0.2)
-        gen.close()
+        page_gen.close()
         if 0:
             time.sleep(30)
 
-    renewable: pw.Generator[pw.Page] = pw.renewable(gen_page_cm, 3)
-    run(renewable)
+    auto_renew_page_gen: pw.Generator[pw.Page] = pw.auto_renew(gen_page_cm, 3)
+    run(page_gen=auto_renew_page_gen)
 
-    auto_renew: pw.GeneratorContextManagerGenerator[pw.Page] = pw.auto_renew(gen_page_cm, 3)
-    with auto_renew as gen:
-        run(gen)
+    renewing: pw.GeneratorContextManagerGenerator[pw.Page] = pw.renewing(gen_page_cm, 3)
+    with renewing as page_gen:
+        run(page_gen=page_gen)
 
 
 def test_renew():

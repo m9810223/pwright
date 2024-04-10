@@ -21,7 +21,7 @@ from ._cms import playwright_browser as playwright_browser
 from ._cms import playwright_context as playwright_context
 from ._cms import playwright_page as playwright_page
 from .utils import auto_renew as auto_renew
-from .utils import renewable as renewable
+from .utils import renewing as renewing
 from .utils import screenshot as screenshot
 
 

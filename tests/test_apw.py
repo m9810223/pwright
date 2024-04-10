@@ -28,25 +28,23 @@ async def _test_renew(headed=True):
 
     gen_page_cm: pw.AsyncGeneratorContextManager[pw.Page] = gen_page
 
-    async def run(gen: pw.AsyncGenerator[pw.Page]):
+    async def run(*, page_gen: pw.AsyncGenerator[pw.Page]):
         for _ in range(5):
-            page = await anext(gen)
+            page = await anext(page_gen)
             await page.goto('https://playwright.dev/')
             print(id(page))
             if 0:
                 time.sleep(0.2)
-        await gen.aclose()
+        await page_gen.aclose()
         if 0:
             await asyncio.sleep(30)
 
-    renewable: pw.AsyncGenerator[pw.Page] = pw.renewable(gen_page_cm, 3)
-    await run(renewable)
+    auto_renew_page_gen: pw.AsyncGenerator[pw.Page] = pw.auto_renew(gen_page_cm, 3)
+    await run(page_gen=auto_renew_page_gen)
 
-    auto_renew: pw.AsyncGeneratorContextManagerAsyncGenerator[pw.Page] = pw.auto_renew(
-        gen_page_cm, 3
-    )
-    async with auto_renew as agen:
-        await run(agen)
+    renewing: pw.AsyncGeneratorContextManagerAsyncGenerator[pw.Page] = pw.renewing(gen_page_cm, 3)
+    async with renewing as agen:
+        await run(page_gen=agen)
 
 
 def test_renew():

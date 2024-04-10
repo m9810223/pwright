@@ -15,13 +15,13 @@ T = t.TypeVar('T')
 
 
 @asynccontextmanager
-async def auto_renew(
+async def renewing(
     p: AsyncGeneratorContextManager[T], n: int
 ) -> t.AsyncGenerator[t.AsyncGenerator[T, None], None]:
-    yield renewable(p, n)
+    yield auto_renew(p, n)
 
 
-async def renewable(p: AsyncGeneratorContextManager[T], n: int) -> t.AsyncGenerator[T, None]:
+async def auto_renew(p: AsyncGeneratorContextManager[T], n: int) -> t.AsyncGenerator[T, None]:
     while True:
         async with p() as y:
             for _ in range(n):
