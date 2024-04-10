@@ -2,6 +2,15 @@
 
 
 
+## v9.0.0 (2024-04-10)
+
+### Breaking
+
+* feat: release
+
+BREAKING CHANGE: `renewable` is renamed to `auto_renew` and `renewing` is renamed to `renewing` in both sync and async APIs. ([`34de549`](https://github.com/michaelwhouse/pwright/commit/34de5493051c5372422f8b77dd11765c6426954b))
+
+
 ## v8.10.0 (2024-04-08)
 
 ### Feature
