@@ -4,16 +4,13 @@ import sys
 import time
 
 from pwright import apw as pw
-from pwright.constants import BROWSER_TYPES
 from pwright.typealiases import BrowserTypeT
-import pytest
 
 
 if sys.version_info < (3, 10):
     anext = pw.anext
 
 
-@pytest.mark.parametrize('browser_type', BROWSER_TYPES)
 def test_pw_page(browser_type):
     async def get_title(*, url: str):
         async with pw.pw_page(browser_type=browser_type) as page:
@@ -51,7 +48,6 @@ async def _test_renew(*, browser_type: BrowserTypeT = 'firefox', headed=True):
         await run(page_gen=agen)
 
 
-@pytest.mark.parametrize('browser_type', BROWSER_TYPES)
 def test_renew(browser_type):
     asyncio.run(_test_renew(browser_type=browser_type, headed=False))
 

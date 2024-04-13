@@ -2,12 +2,9 @@ from contextlib import contextmanager
 import time
 
 from pwright import pw
-from pwright.constants import BROWSER_TYPES
 from pwright.typealiases import BrowserTypeT
-import pytest
 
 
-@pytest.mark.parametrize('browser_type', BROWSER_TYPES)
 def test_pw_page(browser_type):
     def get_title(*, url: str):
         with pw.pw_page(browser_type=browser_type) as page:
@@ -45,7 +42,6 @@ def _test_renew(*, browser_type: BrowserTypeT = 'firefox', headed=True):
         run(page_gen=page_gen)
 
 
-@pytest.mark.parametrize('browser_type', BROWSER_TYPES)
 def test_renew(browser_type):
     _test_renew(browser_type=browser_type, headed=False)
 

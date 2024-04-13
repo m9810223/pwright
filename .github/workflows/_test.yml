@@ -25,5 +25,5 @@ jobs:
           cache-dependency-path: "**/pdm.lock"
       - run: pdm install
       - run: pdm list --graph
-      - run: pdm run playwright install
+      - run: pdm run pw_install
       - run: pdm run test
