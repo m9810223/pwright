@@ -2,6 +2,15 @@
 
 
 
+## v9.1.0 (2024-04-13)
+
+### Feature
+
+* feat: release ([`02f7ec3`](https://github.com/michaelwhouse/pwright/commit/02f7ec3d9016061798f12e4d62d37f949de61e2a))
+
+* feat: release ([`0d9c367`](https://github.com/michaelwhouse/pwright/commit/0d9c36728925ef8ef6c4354b4edd231e7beb39a8))
+
+
 ## v9.0.0 (2024-04-10)
 
 ### Breaking
