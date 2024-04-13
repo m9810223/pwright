@@ -18,7 +18,7 @@ distribution = true
 pw = "playwright"
 pw_install = { composite = [
     "python -c \"print('playwright install...\\n')\"",
-    "playwright install --with-deps",
+    "playwright install --with-deps chromium firefox webkit",
 ] }
 # post_install = { composite = ["pw_install", "test"] }
 test = "pytest -n auto -v"
