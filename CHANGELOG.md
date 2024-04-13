@@ -2,9 +2,18 @@
 
 
 
+## v9.2.0 (2024-04-13)
+
+### Unknown
+
+* Merge branch &#39;master&#39; of github.com:michaelwhouse/pwright ([`f2c7037`](https://github.com/michaelwhouse/pwright/commit/f2c7037a040baa34883532d862c4189b5104fb1a))
+
+
 ## v9.1.0 (2024-04-13)
 
 ### Feature
+
+* feat: release ([`d8f5327`](https://github.com/michaelwhouse/pwright/commit/d8f5327801d31e25cadf0681a682b09c91716bc5))
 
 * feat: release ([`02f7ec3`](https://github.com/michaelwhouse/pwright/commit/02f7ec3d9016061798f12e4d62d37f949de61e2a))
 
