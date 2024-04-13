@@ -23,12 +23,12 @@ repos:
   ### PYTHON
 
   - repo: https://github.com/psf/black
-    rev: 552baf822992936134cbd31a38f69c8cfe7c0f05  # frozen: 24.3.0
+    rev: 8fe627072f15ff2e3d380887b92f7868efaf6d05  # frozen: 24.4.0
     hooks: # https://black.readthedocs.io/en/stable/integrations/source_version_control.html
       - id: black
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 1986670a8c4578a526ad3dddee3b35d9cfb9d7be  # frozen: v0.3.4
+    rev: e76e45000a5aa92cd2ec4d3fb1485f2f9fea5097  # frozen: v0.3.7
     hooks: # https://beta.ruff.rs/docs/installation-and-usage/#usage
       - id: ruff
 
@@ -57,12 +57,12 @@ repos:
   ### MISC
 
   - repo: https://github.com/crate-ci/typos
-    rev: 68c7289a620636165869822d2d233e785272935b  # frozen: v1.19.0
+    rev: b3431cebdd4753d61c0607f7584b1ebe6f807628  # frozen: v1.20.8
     hooks:
       - id: typos
 
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: 0afbc519ee4aa0a1eb0f7dd78876c8de46d4cf08 # frozen: v2.12.0
+    rev: bdf9bad34ed8102dee37a1fabb11ebc40d51063f  # frozen: v2.13.0
     hooks:
       - id: pretty-format-yaml
         args:
@@ -71,7 +71,7 @@ repos:
           - --autofix
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: c4a0b883114b00d8d76b479c820ce7950211c99b # frozen: v4.5.0
+    rev: 2c9f875913ee60ca25ce70243dc24d5b6415598c  # frozen: v4.6.0
     hooks: # https://pre-commit.com/hooks.html
       # `(\S) - ` -> `$1 # `
       - id: check-added-large-files # prevents giant files from being committed.

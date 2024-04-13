@@ -4,15 +4,19 @@ import sys
 import time
 
 from pwright import apw as pw
+from pwright.constants import BROWSER_TYPES
+from pwright.typealiases import BrowserTypeT
+import pytest
 
 
 if sys.version_info < (3, 10):
     anext = pw.anext
 
 
-def test_pw_page():
+@pytest.mark.parametrize('browser_type', BROWSER_TYPES)
+def test_pw_page(browser_type):
     async def get_title(*, url: str):
-        async with pw.pw_page() as page:
+        async with pw.pw_page(browser_type=browser_type) as page:
             await page.goto(url)
             title = await page.title()
             return title
@@ -20,10 +24,10 @@ def test_pw_page():
     assert 'Playwright' in asyncio.run(get_title(url='https://playwright.dev/'))
 
 
-async def _test_renew(headed=True):
+async def _test_renew(*, browser_type: BrowserTypeT = 'firefox', headed=True):
     @asynccontextmanager
     async def gen_page():
-        async with pw.pw_page(headed=headed) as page:
+        async with pw.pw_page(browser_type=browser_type, headed=headed) as page:
             yield page
 
     gen_page_cm: pw.AsyncGeneratorContextManager[pw.Page] = gen_page
@@ -47,8 +51,9 @@ async def _test_renew(headed=True):
         await run(page_gen=agen)
 
 
-def test_renew():
-    asyncio.run(_test_renew(headed=False))
+@pytest.mark.parametrize('browser_type', BROWSER_TYPES)
+def test_renew(browser_type):
+    asyncio.run(_test_renew(browser_type=browser_type, headed=False))
 
 
 if __name__ == '__main__':

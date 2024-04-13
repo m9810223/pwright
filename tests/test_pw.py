@@ -2,11 +2,15 @@ from contextlib import contextmanager
 import time
 
 from pwright import pw
+from pwright.constants import BROWSER_TYPES
+from pwright.typealiases import BrowserTypeT
+import pytest
 
 
-def test_pw_page():
+@pytest.mark.parametrize('browser_type', BROWSER_TYPES)
+def test_pw_page(browser_type):
     def get_title(*, url: str):
-        with pw.pw_page() as page:
+        with pw.pw_page(browser_type=browser_type) as page:
             page.goto(url)
             title = page.title()
             return title
@@ -14,10 +18,10 @@ def test_pw_page():
     assert 'Playwright' in get_title(url='https://playwright.dev/')
 
 
-def _test_renew(headed=True):
+def _test_renew(*, browser_type: BrowserTypeT = 'firefox', headed=True):
     @contextmanager
     def gen_page():
-        with pw.pw_page(headed=headed) as page:
+        with pw.pw_page(browser_type=browser_type, headed=headed) as page:
             yield page
 
     gen_page_cm: pw.GeneratorContextManager[pw.Page] = gen_page
@@ -41,8 +45,9 @@ def _test_renew(headed=True):
         run(page_gen=page_gen)
 
 
-def test_renew():
-    _test_renew(headed=False)
+@pytest.mark.parametrize('browser_type', BROWSER_TYPES)
+def test_renew(browser_type):
+    _test_renew(browser_type=browser_type, headed=False)
 
 
 if __name__ == '__main__':

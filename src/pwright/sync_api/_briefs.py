@@ -2,7 +2,8 @@ from contextlib import contextmanager
 from pathlib import Path
 import typing as t
 
-from .._constants import INIT_SCRIPT_HIDE_NAVIGATOR
+from ..constants import INIT_SCRIPT_HIDE_NAVIGATOR
+from ..typealiases import BrowserTypeT
 from ..typealiases import SecondsT
 from ._apis import ProxySettings
 from ._cms import playwright_browser
@@ -17,6 +18,7 @@ pw_browser = playwright_browser
 def pw_context(
     *,
     # [browser]
+    browser_type: t.Optional[BrowserTypeT] = None,
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
@@ -42,6 +44,7 @@ def pw_context(
 def pw_page(
     *,
     # [browser]
+    browser_type: t.Optional[BrowserTypeT] = None,
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,

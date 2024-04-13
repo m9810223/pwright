@@ -1,5 +1,6 @@
 from playwright.sync_api import Browser as Browser
 from playwright.sync_api import BrowserContext as BrowserContext
+from playwright.sync_api import BrowserType as BrowserType
 from playwright.sync_api import Dialog as Dialog
 from playwright.sync_api import ElementHandle as ElementHandle
 from playwright.sync_api import Page as Page

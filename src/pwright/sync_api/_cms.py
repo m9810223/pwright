@@ -3,9 +3,11 @@ import logging
 from pathlib import Path
 import typing as t
 
-from .._constants import INIT_SCRIPT_HIDE_NAVIGATOR
 from .._utils import to_milliseconds
+from ..constants import INIT_SCRIPT_HIDE_NAVIGATOR
+from ..typealiases import BrowserTypeT
 from ..typealiases import SecondsT
+from ._apis import BrowserType
 from ._apis import ProxySettings
 from ._apis import playwright
 
@@ -17,27 +19,25 @@ logger = logging.getLogger(__name__)
 def playwright_browser(
     *,
     # [browser]
+    browser_type: t.Optional[BrowserTypeT] = None,
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
     slow_mo: t.Optional[SecondsT] = None,
     traces_dir: t.Optional[t.Union[str, Path]] = None,
 ):
+    browser_type = browser_type or 'chromium'
     # https://playwright.dev/python/docs/test-runners#fixtures
     with playwright() as _playwright:
         logger.debug(f'{_playwright = }')
-        with _playwright.chromium.launch(
+        with t.cast(BrowserType, getattr(_playwright, browser_type)).launch(
             executable_path=executable_path,
             headless=not headed,
             proxy=proxy,
             slow_mo=to_milliseconds(slow_mo),
             traces_dir=traces_dir,
         ) as browser:
-            browser_type = browser.browser_type
-            logger.debug(f'{browser_type = }')
-            logger.debug(f'{browser = }')
-            browser_name = browser_type.name
-            logger.debug(f'{browser_name = }')
+            logger.debug(f'{browser.browser_type.name = }')
             yield browser
 
 
@@ -45,6 +45,7 @@ def playwright_browser(
 def playwright_context(
     *,
     # [browser]
+    browser_type: t.Optional[BrowserTypeT] = None,
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
@@ -63,6 +64,7 @@ def playwright_context(
     path='trace.zip',
 ):
     with playwright_browser(
+        browser_type=browser_type,
         executable_path=executable_path,
         headed=headed,
         proxy=proxy,
@@ -93,6 +95,7 @@ def playwright_context(
 def playwright_page(
     *,
     # [browser]
+    browser_type: t.Optional[BrowserTypeT] = None,
     executable_path: t.Optional[t.Union[str, Path]] = None,
     headed: t.Optional[bool] = None,
     proxy: t.Optional[ProxySettings] = None,
@@ -116,6 +119,7 @@ def playwright_page(
     init_script_path: t.Optional[t.Union[str, Path]] = None,
 ):
     with playwright_context(
+        browser_type=browser_type,
         executable_path=executable_path,
         headed=headed,
         proxy=proxy,
