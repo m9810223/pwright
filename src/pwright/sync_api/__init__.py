@@ -5,6 +5,7 @@ from ._apis import Browser as Browser
 from ._apis import BrowserContext as BrowserContext
 from ._apis import Dialog as Dialog
 from ._apis import ElementHandle as ElementHandle
+from ._apis import Locator as Locator
 from ._apis import Page as Page
 from ._apis import Playwright as Playwright
 from ._apis import Route as Route
