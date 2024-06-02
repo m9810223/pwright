@@ -2,6 +2,13 @@
 
 
 
+## v9.5.0 (2024-06-02)
+
+### Feature
+
+* feat: release ([`25c9f19`](https://github.com/michaelwhouse/pwright/commit/25c9f19518b63b90a4d108628b0a41d08a63296c))
+
+
 ## v9.4.0 (2024-04-21)
 
 ### Feature
