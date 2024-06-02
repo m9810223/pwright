@@ -9,6 +9,7 @@ from ._apis import Browser as Browser
 from ._apis import BrowserContext as BrowserContext
 from ._apis import Dialog as Dialog
 from ._apis import ElementHandle as ElementHandle
+from ._apis import Error as Error
 from ._apis import FrameLocator as FrameLocator
 from ._apis import Locator as Locator
 from ._apis import Page as Page
