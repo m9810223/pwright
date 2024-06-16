@@ -23,17 +23,17 @@ repos:
   ### PYTHON
 
   - repo: https://github.com/psf/black
-    rev: 8fe627072f15ff2e3d380887b92f7868efaf6d05  # frozen: 24.4.0
+    rev: 3702ba224ecffbcec30af640c149f231d90aebdb  # frozen: 24.4.2
     hooks: # https://black.readthedocs.io/en/stable/integrations/source_version_control.html
       - id: black
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: e76e45000a5aa92cd2ec4d3fb1485f2f9fea5097  # frozen: v0.3.7
+    rev: 02609a0003fd4903bd7f43852e5dfc82242a96db  # frozen: v0.4.9
     hooks: # https://beta.ruff.rs/docs/installation-and-usage/#usage
       - id: ruff
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "9db9854e3041219b1eb619872a2dfaf58adfb20b"  # frozen: v1.9.0
+    rev: "e5ea6670624c24f8321f6328ef3176dbba76db46"  # frozen: v1.10.0
     hooks:
       - id: mypy
         additional_dependencies: [types-all]
@@ -41,7 +41,7 @@ repos:
           - --explicit-package-bases
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: 12af25eb252deaaecb6b259df40d01f42e716dc3  # frozen: v3.15.2
+    rev: 32151ac97cbfd7f9dcd22e49516fb32266db45b4  # frozen: v3.16.0
     hooks:
       - id: pyupgrade
 
@@ -57,7 +57,7 @@ repos:
   ### MISC
 
   - repo: https://github.com/crate-ci/typos
-    rev: b3431cebdd4753d61c0607f7584b1ebe6f807628  # frozen: v1.20.8
+    rev: 43b599054e8e61744a02a68f5885d3642d3c0dd9  # frozen: v1.22.7
     hooks:
       - id: typos
 
