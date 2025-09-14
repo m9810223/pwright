@@ -23,24 +23,24 @@ repos:
   ### PYTHON
 
   - repo: https://github.com/psf/black
-    rev: b965c2a5026f8ba399283ba3e01898b012853c79  # frozen: 24.8.0
+    rev: 8a737e727ac5ab2f1d4cf5876720ed276dc8dc4b  # frozen: 25.1.0
     hooks: # https://black.readthedocs.io/en/stable/integrations/source_version_control.html
       - id: black
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: cc915bbf189077041f55bc59c4c0cf7f30cc921f  # frozen: v0.6.8
+    rev: 13a6bda8ea7612b3aec844ded16569d424b9a1ab  # frozen: v0.13.0
     hooks: # https://beta.ruff.rs/docs/installation-and-usage/#usage
       - id: ruff
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "d4911cfb7f1010759fde68da196036feeb25b99d"  # frozen: v1.11.2
+    rev: "30f435a17e4833cfc546d0c2bff4ec75d815f739"  # frozen: v1.18.1
     hooks:
       - id: mypy
         args:
           - --explicit-package-bases
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: a25bb536e10881d928ee824910cbaab8f4719bd1  # frozen: v3.17.0
+    rev: 37bfa06d791fd38fb4e54910b36a2ff57641b074  # frozen: v3.20.0
     hooks:
       - id: pyupgrade
 
@@ -56,12 +56,12 @@ repos:
   ### MISC
 
   - repo: https://github.com/crate-ci/typos
-    rev: a0058970b777e6ddbbd92ed552885352ab4c873e  # frozen: v1.24.6
+    rev: edb4e206047e89b93ebe08f1a2ccc3d581a70cc7  # frozen: v1
     hooks:
       - id: typos
 
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: a6273196190bb0f68caf1dc68073cf62c719f725  # frozen: v2.14.0
+    rev: 19b28a9f0a0102b30776f054bea4176e7af50dbe  # frozen: v2.15.0
     hooks:
       - id: pretty-format-yaml
         args:
@@ -70,7 +70,7 @@ repos:
           - --autofix
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 2c9f875913ee60ca25ce70243dc24d5b6415598c  # frozen: v4.6.0
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
     hooks: # https://pre-commit.com/hooks.html
       # `(\S) - ` -> `$1 # `
       - id: check-added-large-files # prevents giant files from being committed.
